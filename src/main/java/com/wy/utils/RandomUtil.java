@@ -1,4 +1,4 @@
-package myself.wy.utils;
+package com.wy.utils;
 
 import java.util.HashSet;
 import java.util.Random;

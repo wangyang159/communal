@@ -1,4 +1,4 @@
-package myself.wy.utils;
+package com.wy.utils;
 
 import java.util.Calendar;
 import java.util.Date;
