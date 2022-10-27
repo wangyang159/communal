@@ -7,41 +7,41 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @作者 wangyang
- * @创建时间 2022/9/18
- * @描述
- *  字符串工具类
+ * 作者: wangyang <br/>
+ * 创建时间: 2022/9/18 <br/>
+ * 描述: <br/>
+ * &nbsp;&nbsp;&nbsp;&nbsp;字符串工具类
  */
 public class StringUtil {
 
 	/**
-	 *@描述 判断源字符串是否有值,空串也算没值,空格算有值
-	 *@作者 wangyang
-	 *@创建时间 2022/10/25
-	 *@参数 src-字符串
-	 *@返回值 true表示有值,false表示空
+	 * 描述: 判断源字符串是否有值,空串也算没值,空格算有值 <br/>
+	 * 作者: wangyang <br/>
+	 * 创建时间: 2022/10/25 <br/>
+	 * 参数: src-字符串 <br/>
+	 * 返回值: true表示有值,false表示空 <br/>
 	 */
 	public static boolean hasLength(String src) {
 		return src != null && !src.equals("");
 	}
 
 	/**
-	 *@描述 判断源字符串,空串和空格都算没有值
-	 *@作者 wangyang
-	 *@创建时间 2022/10/25
-	 *@参数 src-字符串
-	 *@返回值 true表示有值,false表示空
+	 * 描述: 判断源字符串,空串和空格都算没有值 <br/>
+	 * 作者: wangyang <br/>
+	 * 创建时间: 2022/10/25 <br/>
+	 * 参数: src-字符串 <br/>
+	 * 返回值: true表示有值,false表示空 <br/>
 	 */
 	public static boolean hasText(String src) {
 		return src != null && !src.trim().equals("");
 	}
 
 	/**
-	 *@描述 随机生成单个中文，默认字符集GB2312
-	 *@作者 wangyang
-	 *@创建时间 2022/10/25
-	 *@参数 NULL
-	 *@返回值 单个中文汉字
+	 * 描述: 随机生成单个中文，默认字符集GB2312 <br/>
+	 * 作者: wangyang <br/>
+	 * 创建时间: 2022/10/25 <br/>
+	 * 参数: NULL <br/>
+	 * 返回值 单个中文汉字 <br/>
 	 */
 	public static String getOneChineseStr() {
 		int q, w;
@@ -63,11 +63,11 @@ public class StringUtil {
 	}
 
 	/**
-	 *@描述 返回参数length个中文汉字字符串，字符集GB2312
-	 *@作者 wangyang
-	 *@创建时间 2022/10/25
-	 *@参数 length-汉字个数
-	 *@返回值 汉字组成的字符串
+	 * 描述: 返回参数length个中文汉字字符串，字符集GB2312 <br/>
+	 * 作者: wangyang <br/>
+	 * 创建时间: 2022/10/25 <br/>
+	 * 参数: length-汉字个数 <br/>
+	 * 返回值: 汉字组成的字符串 <br/>
 	 */
 	public static String randomChineseString(int length) {
 		StringBuffer sb = new StringBuffer();
@@ -78,11 +78,11 @@ public class StringUtil {
 	}
 
 	/**
-	 *@描述 获取一个百家姓中的姓氏
-	 *@作者 wangyang
-	 *@创建时间 2022/10/25
-	 *@参数 NULL
-	 *@返回值 中国姓氏
+	 * 描述: 获取一个百家姓中的姓氏 <br/>
+	 * 作者: wangyang <br/>
+	 * 创建时间: 2022/10/25 <br/>
+	 * 参数: NULL <br/>
+	 * 返回值: 中国姓氏 <br/>
 	 */
 	public static String generateChineseFamily() {
 		String[] surname = { "赵", "钱", "孙", "李", "周", "吴", "郑", "王", "冯", "陈", "楮", "卫", "蒋", "沈", "韩", "杨", "朱", "秦",
@@ -115,25 +115,25 @@ public class StringUtil {
 	}
 
 	/**
-	 *@描述 获取一个中国姓名
-	 *@作者 wangyang
-	 *@创建时间 2022/10/25
-	 *@参数 NULL
-	 *@返回值 中国姓名
+	 * 描述: 获取一个中国姓名 <br/>
+	 * 作者: wangyang <br/>
+	 * 创建时间: 2022/10/25 <br/>
+	 * 参数: NULL <br/>
+	 * 返回值: 中国姓名 <br/>
 	 */
 	public static String generateChineseName(){
 		return generateChineseFamily()+randomChineseString(RandomUtil.random(1, 2));
 	}
 
 	/**
-	 *@描述 判断字符串是否是邮箱格式
-	 *@作者 wangyang
-	 *@创建时间 2022/10/25
-	 *@参数 email-邮箱
-	 *@返回值 true是邮箱,false不是
+	 * 描述: 判断字符串是否是邮箱格式 <br/>
+	 * 作者: wangyang <br/>
+	 * 创建时间: 2022/10/25 <br/>
+	 * 参数: email-邮箱 <br/>
+	 * 返回值: true是邮箱,false不是 <br/>
 	 */
 	public static boolean isEmail(String email) {
-		String regex="^[\\d|\\w]+@[\\d|\\w]+\\.[\\d|\\w]+$";
+		String regex="^[\\d|\\w]+ [\\d|\\w]+\\.[\\d|\\w]+$";
 
 		Pattern p = Pattern.compile(regex);
 
@@ -144,11 +144,11 @@ public class StringUtil {
 	}
 
 	/**
-	 *@描述 字符串中是否手机号，只能判断开头为1、3、4、5、6、8的手机号
-	 *@作者 wangyang
-	 *@创建时间 2022/10/25
-	 *@参数 phone-手机号
-	 *@返回值 true是,false不是
+	 * 描述: 字符串中是否手机号，只能判断开头为1、3、4、5、6、8的手机号 <br/>
+	 * 作者: wangyang <br/>
+	 * 创建时间: 2022/10/25 <br/>
+	 * 参数: phone-手机号 <br/>
+	 * 返回值: true是,false不是 <br/>
 	 */
 	public static boolean isPhoneNumber(String phone) {
 		String regex="^1[3|4|5|6|8]{1}\\d{9}$";
@@ -163,11 +163,11 @@ public class StringUtil {
 	}
 
 	/**
-	 *@描述 字符串中的值是否是数字,包含正负数，小数
-	 *@作者 wangyang
-	 *@创建时间 2022/10/25
-	 *@参数 number-目标字符串
-	 *@返回值 true是,false不是
+	 * 描述: 字符串中的值是否是数字,包含正负数，小数 <br/>
+	 * 作者: wangyang <br/>
+	 * 创建时间: 2022/10/25 <br/>
+	 * 参数: number-目标字符串 <br/>
+	 * 返回值: true是,false不是 <br/>
 	 */
 	public static boolean isNumber(String number) {
 		String regex="^[\\-]{0,1}\\d+[\\.]{0,1}\\d+$";
@@ -180,11 +180,11 @@ public class StringUtil {
 	}
 
 	/**
-	 *@描述 实现判断传入的字符串是否为包含http的url地址
-	 *@作者 wangyang
-	 *@创建时间 2022/10/25
-	 *@参数 src-目标字符串
-	 *@返回值 true是,false不是
+	 * 描述: 实现判断传入的字符串是否为包含http的url地址 <br/>
+	 * 作者: wangyang <br/>
+	 * 创建时间: 2022/10/25 <br/>
+	 * 参数: src-目标字符串 <br/>
+	 * 返回值: true是,false不是 <br/>
 	 */
 	public static boolean isHttpUrl(String src){
 		try {
@@ -198,11 +198,11 @@ public class StringUtil {
 	}
 
 	/**
-	 *@描述 把unicode转换成中文
-	 *@作者 wangyang
-	 *@创建时间 2022/10/25
-	 *@参数 dataStr-需要装换的字符串，例如\u7F6E\u7F6E\u7F6E
-	 *@返回值 返回已转成中文的字符串
+	 * 描述: 把unicode转换成中文 <br/>
+	 * 作者: wangyang <br/>
+	 * 创建时间: 2022/10/25 <br/>
+	 * 参数: dataStr-需要装换的字符串，例如\u7F6E\u7F6E\u7F6E <br/>
+	 * 返回值: 返回已转成中文的字符串 <br/>
 	 */
 	public static String decodeUnicode(final String dataStr) {
 		int start = 0;
@@ -224,11 +224,11 @@ public class StringUtil {
 	}
 
 	/**
-	 *@描述 中文转unicode编码
-	 *@作者 wangyang
-	 *@创建时间 2022/10/25
-	 *@参数 gbString-包含中文的字符串
-	 *@返回值 unicode编码，例如\u7F6E\u7F6E\u7F6E
+	 * 描述: 中文转unicode编码 <br/>
+	 * 作者: wangyang <br/>
+	 * 创建时间: 2022/10/25 <br/>
+	 * 参数: gbString-包含中文的字符串 <br/>
+	 * 返回值: unicode编码，例如\u7F6E\u7F6E\u7F6E <br/>
 	 */
 	public static String gbEncoding(final String gbString) {
 		char[] utfBytes = gbString.toCharArray();

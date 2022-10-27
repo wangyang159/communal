@@ -4,19 +4,19 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * @作者 wangyang
- * @创建时间 2022/10/24
- * @描述
- *     时间工具类
+ * 作者: wangyang  <br/>
+ * 创建时间: 2022/10/24  <br/>
+ * 描述:  <br/>
+ * &nbsp;&nbsp;&nbsp;&nbsp;时间工具类  <br/>
  */
 public class DateUtil {
 
 	/**
-	 *@描述 随机生成一个给定范围的日期
-	 *@作者 wangyang
-	 *@创建时间 2022/10/25
-	 *@参数 beginDate-开始时间,enDate-结束时间
-	 *@返回值
+	 * 描述: 随机生成一个给定范围的日期 <br/>
+	 * 作者: wangyang <br/>
+	 * 创建时间: 2022/10/25 <br/>
+	 * 参数: beginDate-开始时间,enDate-结束时间 <br/>
+	 * 返回值:日期  <br/>
 	 */
 	public static Date randomDate(Date beginDate, Date endDate) {
 		long begin = beginDate.getTime();
@@ -30,11 +30,11 @@ public class DateUtil {
 	}
 
 	/**
-	 *@描述 返回一个月的月初
-	 *@作者 wangyang
-	 *@创建时间 2022/10/25
-	 *@参数 date-某月中的任意一天
-	 *@返回值 传入日期所在月的月初
+	 * 描述: 返回一个月的月初 <br/>
+	 * 作者: wangyang <br/>
+	 * 创建时间: 2022/10/25 <br/>
+	 * 参数: date-某月中的任意一天 <br/>
+	 * 返回值: 传入日期所在月的月初 <br/>
 	 */
 	public static Date getMonthBegin(Date date) {
 		Calendar c=Calendar.getInstance();
@@ -49,11 +49,11 @@ public class DateUtil {
 	}
 
 	/**
-	 *@描述 返回一个月的月末
-	 *@作者 wangyang
-	 *@创建时间 2022/10/25
-	 *@参数 date-某月中的任意一天
-	 *@返回值 传入日期所在月的月末
+	 * 描述: 返回一个月的月末 <br/>
+	 * 作者: wangyang <br/>
+	 * 创建时间: 2022/10/25 <br/>
+	 * 参数: date-某月中的任意一天 <br/>
+	 * 返回值: 传入日期所在月的月末 <br/>
 	 */
 	public static Date getMonthEnd(Date date) {
 		Calendar c=Calendar.getInstance();
@@ -66,11 +66,11 @@ public class DateUtil {
 	}
 
 	/**
-	 *@描述 根据出生年月得到岁数
-	 *@作者 wangyang
-	 *@创建时间 2022/10/25
-	 *@参数 dateOfBirth-出生年月
-	 *@返回值 Integer类型的岁数
+	 * 描述: 根据出生年月得到岁数 <br/>
+	 * 作者: wangyang <br/>
+	 * 创建时间: 2022/10/25 <br/>
+	 * 参数: dateOfBirth-出生年月 <br/>
+	 * 返回值: Integer类型的岁数 <br/>
 	 */
 	public static Integer getAge(Date dateOfBirth){
 		Calendar c=Calendar.getInstance();
