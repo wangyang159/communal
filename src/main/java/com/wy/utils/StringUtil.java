@@ -78,7 +78,7 @@ public class StringUtil {
 	}
 
 	/**
-	 * 描述: 获取一个百家姓中的姓氏 <br/>
+	 * 描述: 随机获取一个百家姓中的姓氏 <br/>
 	 * 作者: wangyang <br/>
 	 * 创建时间: 2022/10/25 <br/>
 	 * 参数: NULL <br/>
