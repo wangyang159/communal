@@ -1,6 +1,7 @@
-com\wy\utils\CollectionUtil.class
-com\wy\utils\RandomUtil.class
 com\wy\utils\FileUtil.class
 com\wy\utils\StringUtil.class
 com\wy\utils\Base64Util.class
+com\wy\utils\Test.class
+com\wy\utils\CollectionUtil.class
+com\wy\utils\RandomUtil.class
 com\wy\utils\DateUtil.class

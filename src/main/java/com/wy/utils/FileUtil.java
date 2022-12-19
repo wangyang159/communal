@@ -1,7 +1,6 @@
 package com.wy.utils;
 
 import com.aspose.pdf.Document;
-import com.aspose.pdf.SaveFormat;
 import com.spire.pdf.FileFormat;
 import com.spire.pdf.PdfDocument;
 
@@ -15,7 +14,7 @@ import java.util.zip.ZipOutputStream;
  * 作者 wangyang <br/>
  * 创建时间 2022/9/18 <br/>
  * 描述 <br/>
- * &nbsp;&nbsp;&nbsp;&nbsp;流工具类 <br/>
+ * &nbsp;&nbsp;&nbsp;&nbsp;文件工具类 <br/>
  */
 public class FileUtil {
 
@@ -40,10 +39,10 @@ public class FileUtil {
 	 * 描述: 将多个文件写入一个压缩文件的方法 <br/>
 	 * 作者: wangyang <br/>
 	 * 创建时间: 2022/11/8 <br/>
-	 * 参数: srcFiles-需要压缩的文件数组,zipFile-压缩结果文件路径,byteLeng--默认1024写入文件时的数组大小 <br/>
+	 * 参数: srcFiles-需要压缩的文件数组,zipFile-压缩结果文件路径,byteLeng--默认1024写入文件时的数组大小,del-是否删除原文件默认不删除 <br/>
 	 * 返回值:  <br/>
 	 */
-	public static void zipFiles(File[] srcFiles, File zipFile,int byteLeng) {
+	public static void zipFiles(File[] srcFiles, File zipFile , int byteLeng , boolean del) {
 		// 判断压缩后的文件存在不，不存在则创建
 		if (!zipFile.exists()) {
 			try {
@@ -52,20 +51,20 @@ public class FileUtil {
 				e.printStackTrace();
 			}
 		}
-		// 创建 FileOutputStream 对象
+
+		// 创建 ZipOutputStream 需要传入结果zip的fileoutput
 		FileOutputStream fileOutputStream = null;
-		// 创建 ZipOutputStream
 		ZipOutputStream zipOutputStream = null;
-		// 创建 FileInputStream 对象
+		ZipEntry zipEntry = null;
+		//遍历文件时用的输入流
+		File f = null;
 		FileInputStream fileInputStream = null;
 
 		try {
-			// 实例化 FileOutputStream 对象
+			// 打开结果zip的流
 			fileOutputStream = new FileOutputStream(zipFile);
-			// 实例化 ZipOutputStream 对象
 			zipOutputStream = new ZipOutputStream(fileOutputStream);
-			// 创建 ZipEntry 对象
-			ZipEntry zipEntry = null;
+
 			// 定义每次读取的字节数组
 			byte[] buffer = null ;
 			if(byteLeng == 0 ){
@@ -74,17 +73,24 @@ public class FileUtil {
 				buffer = new byte[byteLeng];
 			}
 
-			int len;
 			// 遍历源文件数组
+			int len;
 			for (int i = 0; i < srcFiles.length; i++) {
-				// 将源文件数组中的当前文件读入 FileInputStream 流中
-				fileInputStream = new FileInputStream(srcFiles[i]);
-				// 实例化 ZipEntry 对象，源文件数组中的当前文件
-				zipEntry = new ZipEntry(srcFiles[i].getName());
+				// 获取原文件流
+				f = srcFiles[i];
+				fileInputStream = new FileInputStream(f);
+				// 当前文件转换为 ZipEntry 对象 加入到结果zip的流里面
+				zipEntry = new ZipEntry(f.getName());
 				zipOutputStream.putNextEntry(zipEntry);
-				// 遍历写入
+				// 写入数据
 				while ((len = fileInputStream.read(buffer)) > 0) {
 					zipOutputStream.write(buffer, 0, len);
+				}
+				zipOutputStream.closeEntry();
+				fileInputStream.close();
+				//删除文件
+				if(del){
+					f.delete();
 				}
 			}
 		} catch (IOException e) {
@@ -93,7 +99,6 @@ public class FileUtil {
 			try {
 				zipOutputStream.closeEntry();
 				zipOutputStream.close();
-				fileInputStream.close();
 				fileOutputStream.close();
 			}catch (IOException e){
 				e.getMessage();
@@ -102,7 +107,15 @@ public class FileUtil {
 	}
 
 	public static void zipFiles(File[] srcFiles, File zipFile){
-		zipFiles(srcFiles,zipFile,1024);
+		zipFiles(srcFiles,zipFile,1024,false);
+	}
+
+	public static void zipFiles(File[] srcFiles, File zipFile,int byteLeng){
+		zipFiles(srcFiles,zipFile,byteLeng,false);
+	}
+
+	public static void zipFiles(File[] srcFiles, File zipFile,boolean del){
+		zipFiles(srcFiles,zipFile,1024,del);
 	}
 
 	/**
@@ -119,6 +132,7 @@ public class FileUtil {
 		FileOutputStream os = new FileOutputStream(resultPath);
 		Document doc = new Document(pdf.getPath());
 		doc.save(os,saveFormat);
+		doc.close();
 		os.close();
 	}
 
