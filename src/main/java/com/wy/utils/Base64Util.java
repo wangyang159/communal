@@ -59,7 +59,7 @@ public class Base64Util {
      * 返回值: 加盐后的byte数组 <br/>
      */
     private static byte[] enfx(byte[] data){
-        //最大加密位数不必加密数据长度短就按照最大加密位数来，反之用数据长度
+        //最大加密位数不比加密数据长度短就按照最大加密位数来，反之用数据长度
         int t = 0;
         if(slen < data.length){
             t = slen;
